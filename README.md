@@ -1,7 +1,7 @@
 # Phonebook
 Example: https://contacts.anking.ru
 
-This app working with backend on Codeigniter (PHP) and Mysql
+This app working with API on Codeigniter (PHP) and Mysql
 
 Using external storage for Offline mode and Sync on startup.
 
