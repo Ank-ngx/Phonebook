@@ -2,8 +2,22 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: '', redirectTo: 'contacts', pathMatch: 'full' },
+  { path: 'contacts', loadChildren: './contacts/contacts.module#ContactsModule' },
+  {
+    path: 'contacts',
+    children: [
+      {
+        path: ':id',
+        children: [
+          {
+            path: '',
+            loadChildren: './contacts/contact/contact.module#ContactModule'
+          }
+        ]
+      }
+    ]
+  }
 ];
 
 @NgModule({

@@ -9,3 +9,37 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+body,html {
+  font-family: 'PT Sans', sans-serif !important;
+  font-size: 16px !important;
+  height: 100%;
+  max-width: 414px;
+  max-height: 736px;
+  //iphone 6/7/8
+  margin: 0 auto;
+  background: #222;
+}
+
+:focus,
+:hover,
+body:active {
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+  .popover-content {
+    top: 10px !important;
+    left: auto !important;
+    right: 10px !important;
+  }
+
+  .title-ios {
+    padding-left: 55px !important;
+    width: 95%;
+    text-align: left !important;
+  }
+  .mr-5{
+    margin-right: 5px;
+  }

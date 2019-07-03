@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/contacts']">
+        <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!item">Add new contact</ion-title>
+    <ion-title *ngIf="item">{{ item.lname }} {{ item.fname }}</ion-title>
+    <ion-buttons slot="end" *ngIf="item">
+      <ion-button (click)="delContact()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br />
+  <form [formGroup]="formData">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Last name *</ion-label>
+        <ion-input formControlName="lname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">First name *</ion-label>
+        <ion-input formControlName="fname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Phone *</ion-label>
+        <ion-input formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input formControlName="text"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <ion-button expand="block" (click)="send()">Save</ion-button>
+        <h6 *ngIf="required" style="text-align: center; color: #ba3030">Requirements fields are not filled.</h6>
+      </div>
+    </ion-list>
+  </form>
+
+</ion-content>
