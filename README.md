@@ -23,3 +23,4 @@ ionic serve
 Simulate Mobile Devices with Device Mode in Chrome DevTools (https://developers.google.com/web/tools/chrome-devtools/device-mode/)
 
 You can start it on mobile phone by Ionic Dev App (https://ionicframework.com/docs/appflow/devapp) (Import/Export will work only in Browser mode. For work on mobile need add ionic native)
+https://ionicframework.com/docs/native/file-chooser
