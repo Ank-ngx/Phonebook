@@ -16,6 +16,8 @@ npm install @ionic/angular@latest --save
 
 npm install -g ionic cordova
 
+npm i
+
 ionic serve 
 
 Simulate Mobile Devices with Device Mode in Chrome DevTools (https://developers.google.com/web/tools/chrome-devtools/device-mode/)
