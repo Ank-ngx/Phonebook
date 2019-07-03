@@ -16,7 +16,7 @@ npm install @ionic/angular@latest --save
 
 npm install -g ionic cordova
 
-npm i
+npm install
 
 ionic serve 
 
