@@ -3,7 +3,8 @@ Example: https://contacts.anking.ru
 
 This app working with API on Codeigniter (PHP) and Mysql
 
-Using external storage for Offline mode and Sync on startup.
+Using external storage for Offline mode and Sync on startup. 
+If you log in from two devices and delete a contact on one of them, on the second device the contact will remain, but cloud icon (which mean saved on mysql) will disappear.
 
 You can check contacts by push one of them, delete, edit add contacts, Import/Export contacts by .csv, search and make a call.
 
