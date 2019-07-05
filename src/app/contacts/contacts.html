@@ -34,20 +34,28 @@
 
 <ion-content>
 
-<ion-searchbar [@SlideLeftRight] placeholder="Search" (ionCancel)="onCancel($event)" (ionInput)="handleInput($event)"></ion-searchbar>
+  <ion-searchbar [@SlideLeftRight] placeholder="Search" (ionCancel)="onCancel($event)" (ionInput)="handleInput($event)"></ion-searchbar>
 
-      <h6 [@SlideLeftRight] *ngIf="items && items.length==0" style="text-align: center">No contacts</h6>
-      <ng-container *ngFor="let item of items | filterBy:{ lname: searchText, fname: searchText, phone: searchText }">
-      <ion-item button [@SlideLeftRight] lines="none" detail="false" (press)="onPress(item)" time="300" [style.touch-action]="'pan-y'" (click)="!checkboxes? presentActionSheet(item) : null" >
-        <ion-note slot="start" class="avatar-text">{{ item.lname.substring(0,1) }}{{ item.fname.substring(0,1) }}</ion-note>
-        <ion-label>
-          <h2>{{ item.lname }} {{ item.fname }}</h2>
-          <p>{{ item.text }}</p>
-        </ion-label>
+  <h6 [@SlideLeftRight] *ngIf="items && items.length==0" style="text-align: center">No contacts</h6>
+  <ng-container *ngFor="let item of items | filterBy:{ lname: searchText, fname: searchText, phone: searchText }">
+    <ion-item button [@SlideLeftRight] lines="none" detail="false" (press)="onPress(item)" time="300" [style.touch-action]="'pan-y'" (click)="!checkboxes? presentActionSheet(item) : null">
+      <ion-note slot="start" class="avatar-text">{{ item.lname.substring(0,1) }}{{ item.fname.substring(0,1) }}</ion-note>
+      <ion-label>
 
-        <ion-checkbox [@SlideLeftRight] slot="end" *ngIf="checkboxes" [(ngModel)]="item.isChecked" (ionChange)="checkChecked(item)"></ion-checkbox>
-      </ion-item>
-      </ng-container>
+        <ion-row>
+          <ion-col size="11" no-padding>
+            <h2>{{ item.lname }} {{ item.fname }}</h2>
+          </ion-col>
+          <ion-col size="1" style="height: 25px;">
+            <ion-icon name="cloud-done" *ngIf="item.global"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <p>{{ item.text }}</p>
+      </ion-label>
+
+      <ion-checkbox [@SlideLeftRight] slot="end" *ngIf="checkboxes" [(ngModel)]="item.isChecked" (ionChange)="checkChecked(item)"></ion-checkbox>
+    </ion-item>
+  </ng-container>
 
 
 

@@ -37,6 +37,9 @@ export class ApiService {
       else {
         this.items = [];
       }
+      this.items.forEach(item => {
+        item.global = false;
+      })
       this.httpContacts();
       this.events.publish('getContacts');
     });
@@ -70,8 +73,10 @@ export class ApiService {
         newItem.lname = item.lname;
         newItem.phone = item.phone;
         newItem.text = item.text;
+        newItem.global = true;
       }
       else {
+        item.global = true;
         this.items.push(item);
       }
     });
@@ -100,6 +105,7 @@ export class ApiService {
       .pipe(catchError(this.handleError))
       .subscribe((Response) => {
         formData.id = Response['id'];
+        formData.global = true;
         this.items.push(formData);
         this.presentToast('Contact added');
         this.storage.set('contacts', this.items);
@@ -114,6 +120,7 @@ export class ApiService {
         item.fname = formData.fname;
         item.phone = formData.phone;
         item.text = formData.text;
+        item.global = true;
       }
     });
     this.httpClient
@@ -129,14 +136,14 @@ export class ApiService {
   delContact(items: any) {
     let count = 0;
     items.forEach(item => {
+      const index: number = this.items.indexOf(item);
+      if (index !== -1) {
+        this.items.splice(index, 1);
+      }
       this.httpClient
         .get('https://api.anking.ru/hotels/contacts?id=' + item.id, this.httpOptions)
         .pipe(catchError(this.handleError))
         .subscribe((Response) => {
-          const index: number = this.items.indexOf(item);
-          if (index !== -1) {
-            this.items.splice(index, 1);
-          }
           this.storage.set('contacts', this.items);
           count += 1;
         });
@@ -171,4 +178,5 @@ export class FormData {
   public lname: any;
   public phone: any;
   public text: any;
+  public global: any;
 }

@@ -47,6 +47,7 @@ export class Contacts implements OnInit, OnDestroy {
   checkboxes;
   checkedCount = 1;
   allChecked;
+  actionSheet;
 
   constructor(
     private events: Events,
@@ -59,7 +60,8 @@ export class Contacts implements OnInit, OnDestroy {
   ) {
     this.platform.backButton.subscribe(() => {
       if (this.items && this.checkboxes) {
-        this.clearCheckboxes()
+        this.clearCheckboxes();
+        this.actionSheet.dismiss();
       }
     });
 
@@ -166,7 +168,7 @@ export class Contacts implements OnInit, OnDestroy {
   }
 
   async presentActionSheet(item) {
-  const actionSheet = await this.actionSheetController.create({
+  this.actionSheet = await this.actionSheetController.create({
     header: item.lname + ' ' + item.fname,
     buttons: [
     {
@@ -201,7 +203,7 @@ export class Contacts implements OnInit, OnDestroy {
       }
     }]
   });
-  await actionSheet.present();
+  await this.actionSheet.present();
 }
 
   ngOnDestroy() {
